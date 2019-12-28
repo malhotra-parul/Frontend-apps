@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Clock in JS</title>
+    <style>
+      body {
+        background-color: bisque;
+      }
+      .button{
+        text-align: center;
+      }
+      button{
+        background-color:brown;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      h1 {
+        text-align: center;
+      }
+      hr {
+        width: 40%;
+        text-align: center;
+      }
+      p {
+        color: brown;
+        text-align: center;
+        font-size: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Clock in JS</h1>
+    <hr size="3" noshade />
+    <br>
+    <br>
+    <div class= "button">
+    <button onclick="updateTime()">Click Me to Check Time!</button>
+</div>
+    <p id="clock"></p>
+
+    <script>
+      function updateTime() {
+        var d = new Date();
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+        var seconds = d.getSeconds();
+        var m = checkTime(minutes);
+        var s = checkTime(seconds);
+        document.getElementById("clock").innerHTML = hours + ":" + m + ":" + s;
+        setTimeout(updateTime, 500);
+      }
+      function checkTime(a) {
+        if (a < 10) {
+          a = "0" + a;
+        }
+        return a;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>StopWatch</title>
+    <style>
+      button {
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      .button1 {
+        background-color: brown;
+      }
+      .button2 {
+        background-color: black;
+      }
+      h1 {
+        text-align: center;
+      }
+      .button,
+      .timer {
+        text-align: center;
+      }
+      p {
+        color: brown;
+        text-align: center;
+        font-size: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>StopWatch</h1>
+    <div class="timer">
+      <p id="sw">00:00:00:00</p>
+    </div>
+    <div class="button">
+      <button class="button1" id="start" onclick="start()">Start</button>
+      <button class="button2" id="stop" onclick="stop()">Stop</button>
+      <button class="button2" id="reset" onclick="reset()">Reset</button>
+    </div>
+  </body>
+  <script>
+    var h = 0;
+    var m = 0;
+    var s = 0;
+    var ms = 0;
+    var set;
+    function start() {
+      ms++;
+      if (ms >= 100) {
+        ms = 0;
+        s++;
+        if (s >= 60) {
+          s = 0;
+          m++;
+          if (m >= 60) {
+            m = 0;
+            h++;
+          }
+        }
+      }
+      document.getElementById("sw").innerHTML =
+        (h > 9 ? h : "0" + h) +
+        ":" +
+        (m > 9 ? m : "0" + m) +
+        ":" +
+        (s > 9 ? s : "0" + s) +
+        ":" +
+        (ms > 9 ? ms : "0" + ms);
+      set = setTimeout(start, 10);
+    }
+
+    function reset() {
+      clearTimeout(set);
+      document.getElementById("sw").innerHTML = "00:00:00:00";
+    }
+
+    function stop() {
+      clearTimeout(set);
+      document.getElementById("sw").innerHTML =
+        (h > 9 ? h : "0" + h) +
+        ":" +
+        (m > 9 ? m : "0" + m) +
+        ":" +
+        (s > 9 ? s : "0" + s) +
+        ":" +
+        (ms > 9 ? ms : "0" + ms);
+    }
+  </script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Timer</h1>
+   
+    Hours :<input type="text" id="hours">
+    Minutes :<input type="text" id="minutes">
+    Seconds :<input type="text" id="seconds">
+    <br>
+   <button onclick="startTimer()">Start Timer</button>
+
+    <p id="timer"></p>
+
+<script>
+        var h = Number(document.getElementById("hours").value);
+        var m = Number(document.getElementById("minutes").value);
+        var s = Number(document.getElementById("seconds").value);
+
+        function startTimer(){
+            if(s>0){
+                s--;
+            }
+            document.getElementById("timer").innerHTML = s;
+            setTimeout(startTimer, 1000);
+        }
+</script>
+</body>
+</html>

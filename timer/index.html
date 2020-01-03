@@ -5,29 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    body {
+      
+        background-image: url("bg.jpg");
+        background-size: cover;
+    }
+    </style>
 </head>
 <body>
     <h1>Timer</h1>
    
-    Hours :<input type="text" id="hours">
     Minutes :<input type="text" id="minutes">
     Seconds :<input type="text" id="seconds">
     <br>
    <button onclick="startTimer()">Start Timer</button>
-
-    <p id="timer"></p>
+   <button onclick="clearTimer()">Clear Timer</button>
 
 <script>
-        var h = Number(document.getElementById("hours").value);
-        var m = Number(document.getElementById("minutes").value);
-        var s = Number(document.getElementById("seconds").value);
-
+    var set;
         function startTimer(){
+            var s = document.getElementById("seconds").value;
+            var m = document.getElementById("minutes").value;
+            if(m<=0){
             if(s>0){
-                s--;
+                s--;  
+                document.getElementById("seconds").value = s;
             }
-            document.getElementById("timer").innerHTML = s;
-            setTimeout(startTimer, 1000);
+            if(s<=0){
+                document.getElementById("seconds").value = "Time's up!"
+            }
+            set = setTimeout(startTimer, 1000);
+        }
+
+        function clearTimer(){
+            clearTimeout(set);
+            document.getElementById("seconds").value = 0;
         }
 </script>
 </body>
